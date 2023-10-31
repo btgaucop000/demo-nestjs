@@ -23,15 +23,15 @@ export class User {
   @Column()
   password: string;
 
-  @Column()
+  @Column({ nullable: true, default: null })
   refresh_token: string;
 
   @Column({ default: 1 })
   status: number;
 
   @CreateDateColumn()
-  createdAt: Date;
+  created_at: Date;
 
   @UpdateDateColumn()
-  updatedAt: Date;
+  updated_at: Date;
 }
