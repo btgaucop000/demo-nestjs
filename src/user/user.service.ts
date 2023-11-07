@@ -6,13 +6,14 @@ import { CreateUserDto } from './dto/create-user.dto';
 import * as bcrypt from 'bcrypt';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { FilterUserDto } from './dto/filter-user.dto';
+import { PaginationResponseDto } from 'src/common-dto/pagination.response.dto';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User) private userRepository: Repository<User>,
   ) {}
-  async findAll(query: FilterUserDto): Promise<any> {
+  async findAll(query: FilterUserDto): Promise<PaginationResponseDto> {
     const items_per_page = Number(query.items_per_page) || 10;
     const page = Number(query.page) || 1;
     const skip = (page - 1) * items_per_page;
